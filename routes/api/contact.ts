@@ -1,7 +1,7 @@
 import { Handlers } from "$fresh/server.ts";
-import { SmtpClient } from "smpt";
+import { resendEmail } from "../../utils/resend.ts";
 
-interface FormFields {
+export interface FormFields {
   "g-recaptcha-response": string;
   email: string;
   name: string;
@@ -32,39 +32,39 @@ async function verifyCaptcha(token: string) {
 }
 
 async function sendEmail(name: string, email: string, content: string) {
-  const client = new SmtpClient();
-
-  console.log(Deno.env.get("EMAIL_PASSWORD") as string);
-
-  await client.connectTLS({
-    hostname: "smtp.gmail.com",
-    port: 465,
-    username: Deno.env.get("EMAIL_USERNAME") as string,
-    password: Deno.env.get("EMAIL_PASSWORD") as string,
-  });
-
-  await client.send({
+  const myEmail = await resendEmail({
     from: Deno.env.get("FROM_EMAIL") as string,
-    to: Deno.env.get("TO_EMAIL") as string,
+    to: [Deno.env.get("TO_EMAIL") as string],
     subject: `Inquiry from ${name} on jakesportfolio.dev`,
-    content: content + `<br><br>name: ${name}<br><br>email: ${email}`,
+    html: content + `<br><br>name: ${name}<br><br>email: ${email}`,
   });
 
-  await client.send({
-    from: Deno.env.get("FROM_EMAIL") as string,
-    to: email,
-    subject: `Confirmation from jakesportfolio.dev`,
-    content: `Thank you for your inquiry ${name || "Whatever your name is"},
-    <br><br>
-    This is an automatic response from https://www.jakesportfolio.dev/ to confirm your inquiry has been sent to the overlord.
-    <br><br>
-    Best,
-    <br>
-    Jake's mail robot
-    `,
-  });
+  if (!myEmail.ok) {
+    const json = await myEmail.json();
+    console.error(JSON.stringify(json));
+    throw new Error(`My email has error ${myEmail.statusText}`);
+  }
 
-  await client.close();
+  if (email) {
+    const clientEmail = await resendEmail({
+      from: Deno.env.get("FROM_EMAIL") as string,
+      to: [email],
+      subject: `Confirmation from jakesportfolio.dev`,
+      html: `Thank you for your inquiry ${name || "Whatever your name is"},
+      <br><br>
+      This is an automatic response from https://www.jakesportfolio.dev/ to confirm your inquiry has been sent to the overlord.
+      <br><br>
+      Best,
+      <br>
+      Jake's mail robot
+      `,
+    });
+    if (!clientEmail.ok) {
+      const json = await clientEmail.json();
+      console.error(JSON.stringify(json));
+      throw new Error(`Client email has error ${clientEmail.statusText}`);
+    }
+  }
 }
 
 export const handler: Handlers = {

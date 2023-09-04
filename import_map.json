@@ -10,7 +10,6 @@
     "twind/": "https://esm.sh/twind@0.16.19/",
     "$std/": "https://deno.land/std@0.187.0/",
     "three": "https://esm.sh/three@0.155.0",
-    "three/addons/": "https://esm.sh/three@0.155.0/examples/jsm/",
-    "smpt": "https://deno.land/x/smtp@v0.7.0/mod.ts"
+    "three/addons/": "https://esm.sh/three@0.155.0/examples/jsm/"
   }
 }

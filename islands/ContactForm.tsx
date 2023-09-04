@@ -1,6 +1,7 @@
 import { useRef } from "preact/hooks";
 import { JSX } from "preact";
 import { useState } from "preact/hooks";
+import { FormFields } from "../routes/api/contact.ts";
 
 interface ContactFormProps {
   captchaSiteKey: string;
@@ -8,34 +9,34 @@ interface ContactFormProps {
 
 export default function ContactForm(props: ContactFormProps) {
   const { captchaSiteKey } = props;
+  const formRef = useRef<HTMLFormElement | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(false);
   const captchaRef = useRef<HTMLInputElement | null>(null);
 
-  const sendForm = async (e: JSX.TargetedEvent<HTMLFormElement, Event>) => {
-    e.preventDefault();
-    await populatCaptchaToken();
-    const target = e.target as HTMLFormElement;
-    const form = target.closest("form") as HTMLFormElement;
-    setIsDisabled(true);
+  const getFormData = () => {
+    const form = formRef.current as HTMLFormElement;
     const formData = new FormData(form);
     const data: Record<string, string> = {};
     for (const [key, value] of formData.entries()) {
       data[key] = value as string;
     }
+    return data as unknown as FormFields;
+  };
+
+  const sendForm = async (e: JSX.TargetedEvent<HTMLFormElement, Event>) => {
+    e.preventDefault();
+    await populatCaptchaToken();
+    const data = getFormData();
     const resp = await fetch("/api/contact", {
       method: "post",
       body: JSON.stringify(data),
     });
     if (!resp.ok) {
       setIsError(true);
-      console.error("error error");
-      setIsDisabled(false);
       return;
     }
     setIsSubmitted(true);
-    console.log("success");
   };
 
   const populatCaptchaToken = () => {
@@ -57,11 +58,40 @@ export default function ContactForm(props: ContactFormProps) {
     });
   };
 
+  const ErrorMessage = () => {
+    const { name, message } = getFormData();
+    return (
+      <p class="p-4 text-center text-red-500 bg-red-100 rounded-md">
+        Oops, something went wrong 💁‍♂️ You can try sending an email to{" "}
+        <a
+          href={`mailto:jake@jakesportfolio.dev?subject=Inquiry from ${name}&body=${message}`}
+          class="font-bold underline"
+        >
+          jake@jakesportfolio.dev
+        </a>
+        .
+      </p>
+    );
+  };
+
+  const SuccessMessage = () => {
+    return (
+      <div class="p-6 border-2 border-dotted rounded-md divide-white">
+        <p class="text-xl text-center">🎊 🎉 Success! 🎉 🎊</p>
+        <p class="text-xl text-center">
+          😄 I hope to be in touch with you shortly 😄
+        </p>
+      </div>
+    );
+  };
+
   const FormContent = () => (
     <form
       onSubmit={sendForm}
+      ref={formRef}
       class="w-full text-xl grid gap-2 md:gap-4 justify-stretch"
     >
+      {isError && <ErrorMessage />}
       <input
         id="g-recaptcha-response"
         name="g-recaptcha-response"
@@ -75,7 +105,6 @@ export default function ContactForm(props: ContactFormProps) {
         name="name"
         maxLength={100}
         class="px-4 py-2 bg-gray-100 disabled:opacity-20 bg-opacity-50 rounded-md"
-        disabled={isDisabled}
       />
       <label for="email">Email</label>
       <input
@@ -83,7 +112,6 @@ export default function ContactForm(props: ContactFormProps) {
         id="email"
         name="email"
         class="px-4 py-2 bg-gray-100 disabled:opacity-20 bg-opacity-50 rounded-md"
-        disabled={isDisabled}
       />
       <label for="message">Message *</label>
       <textarea
@@ -91,13 +119,11 @@ export default function ContactForm(props: ContactFormProps) {
         name="message"
         maxLength={1000}
         class="px-4 py-2 bg-gray-100 disabled:opacity-20 h-28 bg-opacity-50 rounded-md"
-        disabled={isDisabled}
         required
       ></textarea>
       <button
         type="submit"
         class="px-16 py-2 bg-gray-900 disabled:opacity-20 bg-opacity-50 justify-self-center rounded-md"
-        disabled={isDisabled}
       >
         Send
       </button>
@@ -124,17 +150,6 @@ export default function ContactForm(props: ContactFormProps) {
       </p>
     </form>
   );
-
-  const SuccessMessage = () => {
-    return (
-      <div class="p-6 border-2 border-dotted rounded-md divide-white">
-        <p class="text-xl text-center">🎊🎉 Success! 🎉🎊</p>
-        <p class="text-xl text-center">
-          I hope to be in touch with you shortly 😄
-        </p>
-      </div>
-    );
-  };
 
   const content = isSubmitted ? <SuccessMessage /> : <FormContent />;
 
