@@ -7,7 +7,7 @@ interface Props extends JSX.HTMLAttributes<HTMLElement>{
 
 export function FullHeightSection(props: Props) {
     const {children, 'class': className = "", ...rest} = props;
-    return <section class={"min-h-screen box-border full-height-sec p-4 md:px-16 md:py-8 " + className} {...rest}>
+    return <section class={"box-border full-height-sec p-4 md:px-16 md:py-8 " + className} {...rest}>
         {children}
     </section>
 }

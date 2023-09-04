@@ -1,7 +1,26 @@
-html, body {
+html,
+body {
   background-color: transparent;
   padding: 0;
   margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #00000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffffff1e;
+  border-radius: 2rem;
 }
 
 main {
@@ -14,6 +33,11 @@ main {
 .full-height-sec,
 footer {
   scroll-snap-align: start;
+}
+
+.full-height-sec {
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .isolate {
@@ -178,39 +202,6 @@ footer {
   bottom: 100px;
 }
 
-.slider {
-  display: flex;
-  scroll-snap-type: x mandatory;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth; /* to be able to check for "smooth" scroll in javascript */
-  cursor: grab;
-  align-items: center;
-}
-
-.slider > * {
-  flex: 1 0 35vw;
-  scroll-snap-align: center;
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-button {
-  display: none;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #00000000;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #ffffff1e;
-  border-radius: 2rem;
-}
-
 .fire-container {
   --fire-height: 15px;
   --fire-width: 15px;
@@ -322,29 +313,26 @@ footer {
   }
 }
 
-@keyframes rotate-hue {
-  0% {
-    filter: contrast(0.75) brightness(0.8) hue-rotate(0deg);
-  }
-  25% {
-    filter: contrast(0.75) brightness(0.8) hue-rotate(45deg);
-  }
-  50% {
-    filter: contrast(0.75) brightness(0.8) hue-rotate(90deg);
-  }
-  75% {
-    filter: contrast(0.75) brightness(0.8) hue-rotate(135deg);
-  }
-  100% {
-    filter: contrast(0.75) brightness(0.8) hue-rotate(360deg);
-  }
+.slider {
+  display: flex;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth; /* to be able to check for "smooth" scroll in javascript */
+  cursor: grab;
+  align-items: center;
 }
 
-.hue-rotator {
-  animation-name: rotate-hue;
-  animation-duration: 20s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+.slider > * {
+  flex: 1 0 50vw;
+  scroll-snap-align: center;
+}
+
+@media (min-width: 640px) {
+  .slider > * {
+    flex: 1 0 25rem;
+    scroll-snap-align: center;
+  }
 }
 
 .glass-form {
