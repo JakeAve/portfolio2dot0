@@ -4,6 +4,7 @@ const PREFIX = ["count"];
 
 export async function getCount() {
   const res = await kv.get<number>(PREFIX);
+  console.log({value: res.value})
   return res.value;
 }
 
