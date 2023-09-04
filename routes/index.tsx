@@ -107,7 +107,7 @@ export default function Home(_props: PageProps<HomeProps>) {
             data-animation="animate__lightSpeedInLeft"
             class="relative mt-4 text-xl text-gray-100 pointer-events-none md:mt-6 max-w-screen-md md:text-3xl"
           >
-            I breath life into your ideas. I've worked on projects ranging from
+            I breathe life into your ideas. I've worked on projects ranging from
             video conferencing to games to commerce. Take a look at some of my
             projects.
           </p>
