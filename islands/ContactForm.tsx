@@ -89,7 +89,7 @@ export default function ContactForm(props: ContactFormProps) {
     <form
       onSubmit={sendForm}
       ref={formRef}
-      class="w-full text-xl grid gap-2 md:gap-4 justify-stretch"
+      class="w-full text-lg md:text-xl grid gap-2 md:gap-4 justify-stretch"
     >
       {isError && <ErrorMessage />}
       <input

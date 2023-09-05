@@ -118,7 +118,7 @@ export default function Home(_props: PageProps<HomeProps>) {
           </p>
           <Carousel />
         </FullHeightSection>
-        <FullHeightSection class="relative sea-video-background">
+        <FullHeightSection class="relative">
           <video
             class="absolute top-0 left-0 z-0 object-cover w-full h-full brightness-50 contrast-75"
             src="/videos/sea-960x540.mp4"
@@ -134,7 +134,7 @@ export default function Home(_props: PageProps<HomeProps>) {
           >
             <h2
               id="lets_link_up"
-              class="text-gray-100 text-7xl md:text-8xl lg:text-9xl font-display mix-blend-color-dodge"
+              class="text-gray-100 text-6xl md:text-8xl lg:text-9xl font-display mix-blend-color-dodge"
             >
               Let's link up
             </h2>
