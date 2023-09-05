@@ -10,6 +10,7 @@ import { SocialIcons } from "../components/SocialIcons.tsx";
 import Animations from "../islands/Animations.tsx";
 import { SkillsListItem } from "../components/SkillsListItem.tsx";
 import ContactForm from "../islands/ContactForm.tsx";
+import PageLoading from "../islands/PageLoading.tsx";
 
 interface HomeProps {
   start: number;
@@ -31,7 +32,7 @@ export default function Home(_props: PageProps<HomeProps>) {
         <title>Jake's Portfolio</title>
       </Head>
       <main>
-        <FullHeightSection class="relative flex items-center justify-center bg-transparent isolate dark:bg-gray-800 first-sec">
+        <FullHeightSection class="relative flex items-center justify-center bg-transparent isolate dark:bg-gray-800 first-sec" data-content="loading...">
           <SocialIcons />
           <h1 class="items-center content-center h-full max-w-4xl m-auto text-gray-900 box-border text-9xl grid dark:text-gray-100">
             <span class="animate__animated animate__zoomInDown animate__delay-1s text-8xl md:text-9xl font-retro justify-self-stretch">
@@ -72,6 +73,7 @@ export default function Home(_props: PageProps<HomeProps>) {
               "Docker",
               "DynamoDB",
               "ExpressJS",
+              "Electron",
               "Git",
               "GraphQL",
               "HTML",
@@ -81,9 +83,12 @@ export default function Home(_props: PageProps<HomeProps>) {
               "MongoDB",
               "Next.js",
               "Node.js",
-              "Postgraph",
+              "Postgres",
               "React",
+              "REDUX",
+              "RESTful APIs",
               "SASS",
+              "Socket.io",
               "Svelte",
               "THREE JS",
               "Tailwind",
@@ -145,6 +150,7 @@ export default function Home(_props: PageProps<HomeProps>) {
         <Footer />
       </main>
       <Animations />
+      <PageLoading />
     </>
   );
 }
