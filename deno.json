@@ -19,7 +19,7 @@
     "twind": "https://esm.sh/twind@0.16.19",
     "twind/": "https://esm.sh/twind@0.16.19/",
     "$std/": "https://deno.land/std@0.187.0/",
-    "three": "https://esm.sh/three@0.155.0",
+    "three": "https://esm.sh/v132/three@0.155.0/es2022/three.mjs",
     "three/addons/": "https://esm.sh/three@0.155.0/examples/jsm/"
   },
   "lint": {

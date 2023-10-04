@@ -32,7 +32,10 @@ export default function Home(_props: PageProps<HomeProps>) {
         <title>Jake's Portfolio</title>
       </Head>
       <main>
-        <FullHeightSection class="relative flex items-center justify-center bg-transparent isolate dark:bg-gray-800 first-sec" data-content="loading...">
+        <FullHeightSection
+          class="relative flex items-center justify-center bg-transparent isolate dark:bg-gray-800 first-sec"
+          data-content="loading..."
+        >
           <SocialIcons />
           <h1 class="items-center content-center h-full max-w-4xl m-auto text-gray-900 box-border text-9xl grid dark:text-gray-100">
             <span class="animate__animated animate__zoomInDown animate__delay-1s text-8xl md:text-9xl font-retro justify-self-stretch">
@@ -45,8 +48,10 @@ export default function Home(_props: PageProps<HomeProps>) {
               Jake
             </span>
           </h1>
-          <div class="w-32 h-32 bg-yellow-300 md:w-64 md:h-64 animate-square-1 mix-blend-color-dodge"></div>
-          <div class="w-40 h-40 bg-yellow-400 rounded-full md:h-80 md:w-80 animate-circle-1 mix-blend-color-dodge"></div>
+          <div class="w-32 h-32 bg-yellow-300 md:w-64 md:h-64 animate-square-1 mix-blend-color-dodge">
+          </div>
+          <div class="w-40 h-40 bg-yellow-400 rounded-full md:h-80 md:w-80 animate-circle-1 mix-blend-color-dodge">
+          </div>
         </FullHeightSection>
         <FullHeightSection class="relative text-gray-800 bg-yellow-200 dark:bg-yellow-700 dark:text-gray-50 who-i-am-sec">
           <Cube />
@@ -94,9 +99,8 @@ export default function Home(_props: PageProps<HomeProps>) {
               "Tailwind",
               "Typescript",
               "WebRTC",
-            ].map((text) => (
-              <SkillsListItem text={text} />
-            ))}
+              "Web3",
+            ].map((text) => <SkillsListItem text={text} />)}
           </ul>
         </FullHeightSection>
         <FullHeightSection class="relative overflow-x-visible bg-gray-900">

@@ -54,14 +54,16 @@ const sections: CarouselSecProps[] = [
   {
     alt: "Young Living Knowledge Base",
     caption: "Young Living Knowledge Base",
-    href: "https://www.exteriores.gob.es/Consulados/losangeles/en/Paginas/index.aspx",
+    href:
+      "https://www.exteriores.gob.es/Consulados/losangeles/en/Paginas/index.aspx",
     linkText: "youngliving.com",
     srcName: "/portfolio-screenshots/ylknowledgebase-medium",
   },
   {
     alt: "Consulate of Spain in Los Angeles",
     caption: "Conosulate of Spain",
-    href: "https://www.exteriores.gob.es/Consulados/losangeles/en/Paginas/index.aspx",
+    href:
+      "https://www.exteriores.gob.es/Consulados/losangeles/en/Paginas/index.aspx",
     linkText: "exteriores.gob.es",
     srcName: "/portfolio-screenshots/consulate",
   },
@@ -104,7 +106,7 @@ export default function Carousel() {
       onPointerUp={handlePointerUp}
       onPointerMove={handlePointerMove}
       data-animation="animate__bounceInUp"
-      style={{opacity: 0}}
+      style={{ opacity: 0 }}
     >
       <button
         onClick={scrollBefore}
@@ -126,9 +128,7 @@ export default function Carousel() {
         class="relative px-8 pt-4 pb-6 mx-auto mt-6 md:pt-12 slider gap-8 md:gap-12 md:px-12 lg:gap-16 lg:px-24"
         ref={sliderRef}
       >
-        {sections.map((sec) => (
-          <CarouselSec {...sec} />
-        ))}
+        {sections.map((sec) => <CarouselSec {...sec} />)}
       </div>
       <button
         onClick={scrollNext}

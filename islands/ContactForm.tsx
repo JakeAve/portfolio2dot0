@@ -120,7 +120,8 @@ export default function ContactForm(props: ContactFormProps) {
         maxLength={1000}
         class="px-4 py-2 bg-gray-100 disabled:opacity-20 h-28 bg-opacity-50 rounded-md"
         required
-      ></textarea>
+      >
+      </textarea>
       <button
         type="submit"
         class="px-16 py-2 bg-gray-900 disabled:opacity-20 bg-opacity-50 justify-self-center rounded-md"

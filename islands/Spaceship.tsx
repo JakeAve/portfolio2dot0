@@ -1,5 +1,5 @@
 import { IS_BROWSER } from "$fresh/runtime.ts";
-import { useEffect, useState, useRef } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 
 export default function Spaceship() {
   const spaceshipRef = useRef<null | HTMLDivElement>(null);
@@ -10,10 +10,10 @@ export default function Spaceship() {
     const interval = setInterval(() => {
       const spaceship = spaceshipRef.current as HTMLImageElement;
       const spaceshipRect = spaceship.getBoundingClientRect();
-      const spaceshipCenter =
-        (spaceshipRect.right - spaceshipRect.left) / 2 + spaceshipRect.left;
+      const spaceshipCenter = (spaceshipRect.right - spaceshipRect.left) / 2 +
+        spaceshipRect.left;
       const rotator = spaceship.querySelector(
-        "#rotate-container"
+        "#rotate-container",
       ) as HTMLDivElement;
       if (Math.abs(pointerX - spaceshipCenter) < 3) {
         rotator.style.transform = "rotate(0deg)";
@@ -53,8 +53,8 @@ export default function Spaceship() {
   const shootLaser = () => {
     const spaceship = spaceshipRef.current as HTMLImageElement;
     const spaceshipRect = spaceship.getBoundingClientRect();
-    const spaceshipCenter =
-      (spaceshipRect.right - spaceshipRect.left) / 2 + spaceshipRect.left;
+    const spaceshipCenter = (spaceshipRect.right - spaceshipRect.left) / 2 +
+      spaceshipRect.left;
     const laser = document.createElement("div");
     laser.classList.add("space-laser");
     laser.style.left = spaceshipCenter + "px";

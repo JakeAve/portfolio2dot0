@@ -21,10 +21,13 @@ export default function App(appProps: AppProps) {
         <link rel="stylesheet" href="/styles.css" />
         <link rel="icon" href="/favicon_io/apple-touch-icon.png" />
         <script
-          src={`https://www.google.com/recaptcha/api.js?render=${Deno.env.get(
-            "CAPTCHA_SITE_KEY"
-          )}`}
-        ></script>
+          src={`https://www.google.com/recaptcha/api.js?render=${
+            Deno.env.get(
+              "CAPTCHA_SITE_KEY",
+            )
+          }`}
+        >
+        </script>
         <meta name="description" content="Jake's developer portfolio" />
         <meta name="keywords" content="Jake's developer portfolio" />
         <meta name="author" content="Jake Avery" />

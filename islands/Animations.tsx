@@ -17,7 +17,7 @@ export default function Animations() {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     document.querySelectorAll("[data-animation]").forEach((e) => {

@@ -18,9 +18,8 @@ interface CaptchaResponse {
 }
 
 async function verifyCaptcha(token: string) {
-  const url = `https://www.google.com/recaptcha/api/siteverify?secret=${
-    Deno.env.get("CAPTCHA_SECRET_KEY") as string
-  }&response=${token}`;
+  const url = `https://www.google.com/recaptcha/api/siteverify?secret=${Deno.env
+    .get("CAPTCHA_SECRET_KEY") as string}&response=${token}`;
   const resp = await fetch(url, { method: "post" });
   const json = (await resp.json()) as CaptchaResponse;
   if (json["error-codes"] && json["error-codes"].length) {

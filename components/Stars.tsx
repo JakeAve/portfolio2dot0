@@ -11,7 +11,8 @@ function Star() {
       style={`--star-left: ${getRandomNumber(100)}%; --star-time: ${
         getRandomNumber(1000) + 500
       }ms`}
-    ></div>
+    >
+    </div>
   );
 }
 

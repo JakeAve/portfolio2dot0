@@ -8,11 +8,10 @@ function getRandomNumber(min: number, max: number) {
 
 export default function Cube() {
   if (IS_BROWSER) {
-    let groundColor =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? 0xb45309
-        : 0xfde68a;
+    let groundColor = window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? 0xb45309
+      : 0xfde68a;
 
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -26,7 +25,7 @@ export default function Cube() {
       });
 
     const cubeElement = document.querySelector(
-      "#the-cube"
+      "#the-cube",
     ) as HTMLCanvasElement;
 
     const scene = new THREE.Scene();
@@ -34,7 +33,7 @@ export default function Cube() {
       45,
       cubeElement.clientWidth / cubeElement.clientHeight,
       1,
-      1000
+      1000,
     );
     camera.position.set(0, 5.5804, 7);
     const cameraPivot = new THREE.Object3D();
@@ -160,7 +159,7 @@ export default function Cube() {
 
     const controls = new OrbitControls(
       camera as THREE.Camera,
-      renderer.domElement
+      renderer.domElement,
     );
     controls.minDistance = 2;
     controls.maxDistance = 20;
