@@ -18,6 +18,7 @@ export function ResponsiveImg(props: ResponsiveImgProps) {
       <img
         src={`${srcName}-xs.webp`}
         class="absolute top-0 left-0 h-full filter blur-2xl transform origin-center scale-100"
+        alt={rest?.alt || "" + ' background'}
       />
       <img
         srcSet={srcSet}
