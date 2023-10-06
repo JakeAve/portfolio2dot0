@@ -105,6 +105,7 @@ export default function ContactForm(props: ContactFormProps) {
         name="name"
         maxLength={100}
         class="px-4 py-2 bg-gray-100 disabled:opacity-20 bg-opacity-50 rounded-md"
+        autocomplete="name"
       />
       <label for="email">Email</label>
       <input
@@ -112,6 +113,7 @@ export default function ContactForm(props: ContactFormProps) {
         id="email"
         name="email"
         class="px-4 py-2 bg-gray-100 disabled:opacity-20 bg-opacity-50 rounded-md"
+        autocomplete="email"
       />
       <label for="message">Message *</label>
       <textarea
