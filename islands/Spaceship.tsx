@@ -97,7 +97,12 @@ export default function Spaceship() {
     >
       <div id="spaceship" ref={spaceshipRef}>
         <div id="rotate-container">
-          <img src="/imgs/usa-spaceship-xs.webp" height={50} width={50} alt="spaceship" />
+          <img
+            src="/imgs/usa-spaceship-xs.webp"
+            height={50}
+            width={50}
+            alt="spaceship"
+          />
           <div class="fire-container">
             <div class="red flame"></div>
             <div class="orange flame"></div>

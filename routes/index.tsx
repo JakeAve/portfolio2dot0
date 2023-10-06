@@ -1,4 +1,4 @@
-import type { Handlers, PageProps } from "$fresh/server.ts";
+import type { Handlers, PageProps, RouteConfig } from "$fresh/server.ts";
 import { Head } from "$fresh/runtime.ts";
 import { getCount, setCount } from "../utils/db.ts";
 import { FullHeightSection } from "../components/FullHeightSection.tsx";
@@ -11,6 +11,7 @@ import Animations from "../islands/Animations.tsx";
 import { SkillsListItem } from "../components/SkillsListItem.tsx";
 import ContactForm from "../islands/ContactForm.tsx";
 import PageLoading from "../islands/PageLoading.tsx";
+import { setCSP } from "../csp.ts";
 
 interface HomeProps {
   start: number;
@@ -26,6 +27,7 @@ export const handler: Handlers<HomeProps> = {
 };
 
 export default function Home(_props: PageProps<HomeProps>) {
+  setCSP();
   return (
     <>
       <Head>
@@ -158,3 +160,7 @@ export default function Home(_props: PageProps<HomeProps>) {
     </>
   );
 }
+
+export const config: RouteConfig = {
+  csp: true,
+};
