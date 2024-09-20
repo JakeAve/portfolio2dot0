@@ -36,7 +36,7 @@ export default function Home(_props: PageProps<HomeProps>) {
       <main>
         <FullHeightSection
           class="relative flex items-center justify-center bg-transparent isolate dark:bg-gray-800 first-sec"
-          data-content="loading..."
+          data-content="╲╱"
         >
           <SocialIcons />
           <h1 class="items-center content-center h-full max-w-4xl m-auto text-gray-900 box-border text-9xl grid dark:text-gray-100">

@@ -2,31 +2,32 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $0 from "./routes/_app.tsx";
-import * as $1 from "./routes/api/contact.ts";
-import * as $2 from "./routes/index.tsx";
-import * as $$0 from "./islands/Animations.tsx";
-import * as $$1 from "./islands/Carousel.tsx";
-import * as $$2 from "./islands/ContactForm.tsx";
-import * as $$3 from "./islands/Cube.tsx";
-import * as $$4 from "./islands/PageLoading.tsx";
-import * as $$5 from "./islands/Spaceship.tsx";
+import * as $_app from "./routes/_app.tsx";
+import * as $api_contact from "./routes/api/contact.ts";
+import * as $index from "./routes/index.tsx";
+import * as $Animations from "./islands/Animations.tsx";
+import * as $Carousel from "./islands/Carousel.tsx";
+import * as $ContactForm from "./islands/ContactForm.tsx";
+import * as $Cube from "./islands/Cube.tsx";
+import * as $PageLoading from "./islands/PageLoading.tsx";
+import * as $Spaceship from "./islands/Spaceship.tsx";
+import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/_app.tsx": $0,
-    "./routes/api/contact.ts": $1,
-    "./routes/index.tsx": $2,
+    "./routes/_app.tsx": $_app,
+    "./routes/api/contact.ts": $api_contact,
+    "./routes/index.tsx": $index,
   },
   islands: {
-    "./islands/Animations.tsx": $$0,
-    "./islands/Carousel.tsx": $$1,
-    "./islands/ContactForm.tsx": $$2,
-    "./islands/Cube.tsx": $$3,
-    "./islands/PageLoading.tsx": $$4,
-    "./islands/Spaceship.tsx": $$5,
+    "./islands/Animations.tsx": $Animations,
+    "./islands/Carousel.tsx": $Carousel,
+    "./islands/ContactForm.tsx": $ContactForm,
+    "./islands/Cube.tsx": $Cube,
+    "./islands/PageLoading.tsx": $PageLoading,
+    "./islands/Spaceship.tsx": $Spaceship,
   },
   baseUrl: import.meta.url,
-};
+} satisfies Manifest;
 
 export default manifest;
