@@ -4,6 +4,24 @@ export function Footer() {
       <div class="absolute left-0 z-10 w-full h-24 bg-white bg-gray-100 rounded-full dark:bg-gray-800 -top-10">
       </div>
       <div class="flex flex-row justify-center gap-4">
+      <a
+        href="https://blog.jakesportfolio.dev"
+        target="_blank"
+        rel="noopener"
+        title="Blog"
+        aria-label="Blog"
+        class="p-4 bg-black rounded-full dark:bg-white"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 -960 960 960"
+          height={24}
+          width={24}
+          class="text-gray-100 fill-current dark:text-gray-900"
+        >
+          <path d="M400-400h160v-80H400v80Zm0-120h320v-80H400v80Zm0-120h320v-80H400v80Zm-80 400q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z" />
+        </svg>
+      </a>
         <a
           href="https://www.linkedin.com/in/jake-avery/"
           target="_blank"
