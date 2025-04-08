@@ -3,11 +3,32 @@ import { CarouselSec, CarouselSecProps } from "../components/CarouselSec.tsx";
 
 const sections: CarouselSecProps[] = [
   {
+    alt: "Blog",
+    caption: "Jake's Blog",
+    href: "https://blog.jakesportfolio.dev/",
+    linkText: "blog.jakesportfolio.dev",
+    srcName: "/portfolio-screenshots/blog",
+  },
+  {
     alt: "Evercast",
     caption: "Evercast",
     href: "https://www.evercast.us/",
     linkText: "Evercast.us",
     srcName: "/portfolio-screenshots/evercast-small",
+  },
+  {
+    alt: "Mezmorizer",
+    caption: "Memorizer App",
+    href: "https://mezmorizer.deno.dev/",
+    linkText: "mezmorizer.deno.dev",
+    srcName: "/portfolio-screenshots/mezmorizer",
+  },
+  {
+    alt: "Synthima Password",
+    caption: "Synthima Password",
+    href: "https://synthima-password.deno.dev/",
+    linkText: "synthima-password.deno.dev",
+    srcName: "/portfolio-screenshots/password-generator",
   },
   {
     alt: "Bingasaurus app",
@@ -24,6 +45,13 @@ const sections: CarouselSecProps[] = [
     srcName: "/portfolio-screenshots/comeuntochrist",
   },
   {
+    alt: "Text Compare",
+    caption: "Text Compare",
+    href: "https://scripturecompare.org/",
+    linkText: "ScriptureCompare.org",
+    srcName: "/portfolio-screenshots/text-compare",
+  },
+  {
     alt: "Teh Bots News",
     caption: "Teh Bots News",
     href: "https://tehbots.news/",
@@ -36,6 +64,13 @@ const sections: CarouselSecProps[] = [
     href: "https://jakeave.github.io/tic-tac-toe/",
     linkText: "jakeave.github.io/tic-tac-toe/",
     srcName: "/portfolio-screenshots/tic-tac-toe",
+  },
+  {
+    alt: "GL Link",
+    caption: "GL Link",
+    href: "https://gospellibrary.link/",
+    linkText: "gospellibrary.link",
+    srcName: "/portfolio-screenshots/gl-link",
   },
   {
     alt: "Real Time Strategies",
