@@ -50,10 +50,11 @@ export default function Home(_props: PageProps<HomeProps>) {
               Jake
             </span>
           </h1>
-          <div class="w-32 h-32 bg-yellow-300 md:w-64 md:h-64 animate-square-1 mix-blend-color-dodge">
-          </div>
-          <div class="w-40 h-40 bg-yellow-400 rounded-full md:h-80 md:w-80 animate-circle-1 mix-blend-color-dodge">
-          </div>
+          <div class="w-32 h-32 bg-yellow-300 md:w-64 md:h-64 animate-square-1 mix-blend-color-dodge"></div>
+          <div class="w-40 h-40 bg-yellow-400 rounded-full md:h-80 md:w-80 animate-circle-1 mix-blend-color-dodge"></div>
+          <pre class="absolute bottom-0 right-0 p-4 text-gray-400 dark:text-gray-600 text-xs whitespace-pre-wrap break-words">
+            PGP Fingerprint: 20C8 F929 9F59 0004 0E48 C12C 454F 0481 E4D4 017F
+          </pre>
         </FullHeightSection>
         <FullHeightSection class="relative text-gray-800 bg-yellow-200 dark:bg-yellow-700 dark:text-gray-50 who-i-am-sec">
           <Cube />
@@ -102,7 +103,9 @@ export default function Home(_props: PageProps<HomeProps>) {
               "Typescript",
               "WebRTC",
               "Web3",
-            ].map((text) => <SkillsListItem text={text} />)}
+            ].map((text) => (
+              <SkillsListItem text={text} />
+            ))}
           </ul>
         </FullHeightSection>
         <FullHeightSection class="relative overflow-x-visible bg-gray-900">
