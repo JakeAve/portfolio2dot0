@@ -26,8 +26,8 @@ const sections: CarouselSecProps[] = [
   {
     alt: "Synthima Password",
     caption: "Synthima Password",
-    href: "https://synthima-password.deno.dev/",
-    linkText: "synthima-password.deno.dev",
+    href: "https://synthima-web.jakeave.deno.net/",
+    linkText: "synthima-web.jakeave.deno.net",
     srcName: "/portfolio-screenshots/password-generator",
   },
   {
