@@ -81,11 +81,11 @@ export function Footer() {
         </a>
       </div>
       <div class="flex flex-col items-center mt-8 gap-4">
-        <a href="https://fresh.deno.dev" target="_blank">
+        <a href="https://usefresh.dev" target="_blank">
           <img
             width="197"
             height="37"
-            src="https://fresh.deno.dev/fresh-badge-dark.svg"
+            src="https://usefresh.dev/fresh-badge-dark.svg"
             alt="Made with Fresh"
           />
         </a>

@@ -19,7 +19,7 @@ export const cspDirectives: ContentSecurityPolicyDirectives = {
     "https://fonts.googleapis.com/",
   ],
   frameSrc: ["https://www.google.com/"],
-  imgSrc: [SELF, "https://fresh.deno.dev/"],
+  imgSrc: [SELF, "https://usefresh.dev/"],
 };
 
 export function setCSP() {
@@ -27,12 +27,13 @@ export function setCSP() {
     for (const [key, val] of Object.entries(cspDirectives)) {
       const directive = key as keyof typeof csp.directives;
 
-      if (!csp.directives[directive]) {
+      const existing = csp.directives[directive] as string[] | undefined;
+      if (!existing || existing.includes("'none'")) {
         // @ts-ignore this is tricky to do, we can assume it's not directives.reportUri
-        csp.directives[directive] = [] as string[];
+        csp.directives[directive] = [...(val as string[])];
+      } else {
+        existing.push(...(val as string[]));
       }
-      // @ts-ignore this is tricky to do, we can assume it's not directives.reportUri
-      csp.directives[directive].push(...(val as string[]));
     }
   });
 }
