@@ -1,6 +1,6 @@
 import "$std/dotenv/load.ts";
 
-const dirs = ["./static/portfolio-screenshots",];
+const dirs = ["./static/portfolio-screenshots"];
 
 const exts = [".png", ".jpeg", ".jpg"];
 

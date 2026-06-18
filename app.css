@@ -1,3 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Raleway Dots", cursive;
+  --font-retro: "Monoton", cursive;
+  --font-techno: "Handjet", cursive;
+  --font-sans: "Lato", sans-serif;
+  --font-serif: "Belgrano", serif;
+
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+
+  --color-red-50: #fff1f2;
+  --color-red-100: #ffe4e6;
+  --color-red-200: #fecdd3;
+  --color-red-300: #fda4af;
+  --color-red-400: #fb7185;
+  --color-red-500: #f43f5e;
+  --color-red-600: #e11d48;
+  --color-red-700: #be123c;
+  --color-red-800: #9f1239;
+  --color-red-900: #881337;
+
+  --color-yellow-50: #fffbeb;
+  --color-yellow-100: #fef3c7;
+  --color-yellow-200: #fde68a;
+  --color-yellow-300: #fcd34d;
+  --color-yellow-400: #fbbf24;
+  --color-yellow-500: #f59e0b;
+  --color-yellow-600: #d97706;
+  --color-yellow-700: #b45309;
+  --color-yellow-800: #92400e;
+  --color-yellow-900: #78350f;
+}
+
 html,
 body {
   background-color: #ffffff;
@@ -79,7 +122,6 @@ footer {
   75% {
     transform: translate(0, 25vh);
   }
-
   100% {
     transform: translate(calc(100vw - 105%), 50vh);
   }
@@ -98,8 +140,6 @@ footer {
   position: absolute;
   animation: circle 20s linear 0s infinite alternate;
 }
-
-/* https://codepen.io/tommybickerdike/pen/wMdvpQ */
 
 @keyframes bounce {
   0% {
@@ -248,8 +288,7 @@ footer {
   width: calc(var(--fire-width) / 2);
   height: calc(var(--fire-height) / 2);
   background: gold;
-  box-shadow: 0px 0px calc(var(--fire-width) / 4) calc(var(--fire-width) / 6)
-    gold;
+  box-shadow: 0px 0px calc(var(--fire-width) / 4) calc(var(--fire-width) / 6) gold;
 }
 
 .orange {
@@ -257,8 +296,7 @@ footer {
   width: calc(var(--fire-width) * 4 / 6);
   height: calc(var(--fire-height) * 4 / 6);
   background: orange;
-  box-shadow: 0px 0px calc(var(--fire-width) / 4) calc(var(--fire-width) / 6)
-    orange;
+  box-shadow: 0px 0px calc(var(--fire-width) / 4) calc(var(--fire-width) / 6) orange;
 }
 
 .red {
@@ -266,8 +304,7 @@ footer {
   width: calc(var(--fire-width) * 5 / 6);
   height: calc(var(--fire-height) * 5 / 6);
   background: OrangeRed;
-  box-shadow: 0px 0px calc(var(--fire-width) / 4) calc(var(--fire-width) / 6)
-    OrangeRed;
+  box-shadow: 0px 0px calc(var(--fire-width) / 4) calc(var(--fire-width) / 6) OrangeRed;
 }
 
 .white {
@@ -276,8 +313,7 @@ footer {
   width: calc(var(--fire-width) / 2);
   height: calc(var(--fire-height) / 2);
   background: white;
-  box-shadow: 0px 0px calc(var(--fire-width) / 20) calc(var(--fire-width) / 15)
-    white;
+  box-shadow: 0px 0px calc(var(--fire-width) / 20) calc(var(--fire-width) / 15) white;
 }
 
 .circle {
@@ -291,8 +327,7 @@ footer {
   left: calc(var(--fire-width) * 5 / 12);
   bottom: calc(var(--fire-height) * -5 / 12);
   background: SlateBlue;
-  box-shadow: 0px 0px calc(var(--fire-width) / 4) calc(var(--fire-width) / 6)
-    SlateBlue;
+  box-shadow: 0px 0px calc(var(--fire-width) / 4) calc(var(--fire-width) / 6) SlateBlue;
 }
 
 .black {
@@ -301,8 +336,7 @@ footer {
   left: calc(var(--fire-width) / 6);
   bottom: calc(var(--fire-height) * -1);
   background: black;
-  box-shadow: 0px 0px calc(var(--fire-width) / 4) calc(var(--fire-width) / 6)
-    black;
+  box-shadow: 0px 0px calc(var(--fire-width) / 4) calc(var(--fire-width) / 6) black;
 }
 
 @keyframes flicker {
@@ -331,7 +365,7 @@ footer {
   scroll-snap-type: x mandatory;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth; /* to be able to check for "smooth" scroll in javascript */
+  scroll-behavior: smooth;
   cursor: grab;
   align-items: center;
 }

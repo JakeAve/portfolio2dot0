@@ -1,4 +1,3 @@
-import { Handlers } from "$fresh/server.ts";
 import { resendEmail } from "../../utils/resend.ts";
 
 export interface FormFields {
@@ -66,8 +65,10 @@ async function sendEmail(name: string, email: string, content: string) {
   }
 }
 
-export const handler: Handlers = {
-  async POST(req) {
+export const handler = {
+  async POST(ctx) {
+    const req = ctx.req;
+
     try {
       const data = (await req.json()) as FormFields;
       await verifyCaptcha(data["g-recaptcha-response"]);

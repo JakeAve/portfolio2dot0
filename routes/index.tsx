@@ -1,5 +1,5 @@
-import type { PageProps, RouteConfig } from "$fresh/server.ts";
-import { Head } from "$fresh/runtime.ts";
+import type { PageProps } from "fresh";
+import { Head } from "fresh/runtime";
 import { FullHeightSection } from "../components/FullHeightSection.tsx";
 import Cube from "../islands/Cube.tsx";
 import Carousel from "../islands/Carousel.tsx";
@@ -10,14 +10,12 @@ import Animations from "../islands/Animations.tsx";
 import { SkillsListItem } from "../components/SkillsListItem.tsx";
 import ContactForm from "../islands/ContactForm.tsx";
 import PageLoading from "../islands/PageLoading.tsx";
-import { setCSP } from "../csp.ts";
 
 interface HomeProps {
   start: number;
 }
 
 export default function Home(_props: PageProps<HomeProps>) {
-  setCSP();
   return (
     <>
       <Head>
@@ -40,8 +38,10 @@ export default function Home(_props: PageProps<HomeProps>) {
               Jake
             </span>
           </h1>
-          <div class="w-32 h-32 bg-yellow-300 md:w-64 md:h-64 animate-square-1 mix-blend-color-dodge"></div>
-          <div class="w-40 h-40 bg-yellow-400 rounded-full md:h-80 md:w-80 animate-circle-1 mix-blend-color-dodge"></div>
+          <div class="w-32 h-32 bg-yellow-300 md:w-64 md:h-64 animate-square-1 mix-blend-color-dodge">
+          </div>
+          <div class="w-40 h-40 bg-yellow-400 rounded-full md:h-80 md:w-80 animate-circle-1 mix-blend-color-dodge">
+          </div>
           <pre class="absolute bottom-0 right-0 p-4 text-gray-400 dark:text-gray-600 text-xs whitespace-pre-wrap break-words">
             PGP Fingerprint: 20C8 F929 9F59 0004 0E48 C12C 454F 0481 E4D4 017F
           </pre>
@@ -51,13 +51,13 @@ export default function Home(_props: PageProps<HomeProps>) {
           <h2
             id="who_i_am"
             data-animation="animate__fadeInLeft"
-            class="inline-block px-4 py-2 text-red-600 rounded dark:mix-blend-overlay dark:bg-gray-900  bg-opacity-20 who-i-am-title text-7xl md:text-8xl dark:text-red-50 font-retro backdrop-filter backdrop-blur"
+            class="inline-block px-4 py-2 text-red-600 rounded dark:mix-blend-overlay dark:bg-gray-900/20 who-i-am-title text-7xl md:text-8xl dark:text-red-50 font-retro backdrop-blur"
           >
             Who I am
           </h2>
           <p
             data-animation="animate__fadeInRight"
-            class="px-4 py-2 my-4 text-3xl bg-gray-100 rounded max-w-screen-md md:text-4xl bg-opacity-20 dark:bg-gray-900 backdrop-filter backdrop-blur dark:mix-blend-overlay"
+            class="px-4 py-2 my-4 text-3xl bg-gray-100/20 rounded max-w-screen-md md:text-4xl dark:bg-gray-900/20 backdrop-blur dark:mix-blend-overlay"
           >
             I'm a full-stack Javascript developer with a background in business,
             media and SAAS. I have experience in the following technologies:
@@ -93,9 +93,7 @@ export default function Home(_props: PageProps<HomeProps>) {
               "Typescript",
               "WebRTC",
               "Web3",
-            ].map((text) => (
-              <SkillsListItem text={text} />
-            ))}
+            ].map((text) => <SkillsListItem text={text} />)}
           </ul>
         </FullHeightSection>
         <FullHeightSection class="relative overflow-x-visible bg-gray-900">
@@ -129,7 +127,7 @@ export default function Home(_props: PageProps<HomeProps>) {
           />
           <div
             data-animation="animate__flipInX"
-            class="items-center justify-center p-8 pb-8 m-auto mb-16 text-gray-100 bg-gray-900 max-w-screen-md glass-form justify-items-center grid rounded-md gap-4 md:gap-8 backdrop-filter backdrop-blur backdrop-brightness-75 "
+            class="items-center justify-center p-8 pb-8 m-auto mb-16 text-gray-100 bg-gray-900 max-w-screen-md glass-form justify-items-center grid rounded-md gap-4 md:gap-8 backdrop-blur backdrop-brightness-75"
           >
             <h2
               id="lets_link_up"
@@ -154,6 +152,3 @@ export default function Home(_props: PageProps<HomeProps>) {
   );
 }
 
-export const config: RouteConfig = {
-  csp: true,
-};

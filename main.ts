@@ -1,19 +1,15 @@
-/// <reference no-default-lib="true" />
-/// <reference lib="dom" />
-/// <reference lib="dom.iterable" />
-/// <reference lib="dom.asynciterable" />
-/// <reference lib="deno.ns" />
-
-import { loadSync } from "$std/dotenv/mod.ts";
+import { loadSync } from "@std/dotenv";
 
 loadSync({ export: true });
 
-import { start } from "$fresh/server.ts";
-import manifest from "./fresh.gen.ts";
+import { App, staticFiles, trailingSlashes } from "fresh";
 
-const PORT = Deno.env.get("PORT") as string;
+export const app = new App()
+  .use(staticFiles())
+  .use(trailingSlashes("never"));
 
-await start(manifest, {
-  plugins: [],
-  port: Number(PORT) || 8000,
-});
+app.fsRoutes();
+
+if (import.meta.main) {
+  await app.listen();
+}

@@ -1,4 +1,4 @@
-import { IS_BROWSER } from "$fresh/runtime.ts";
+import { IS_BROWSER } from "fresh/runtime";
 import { useEffect, useRef, useState } from "preact/hooks";
 
 export default function Spaceship() {

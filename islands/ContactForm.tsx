@@ -104,7 +104,7 @@ export default function ContactForm(props: ContactFormProps) {
         id="name"
         name="name"
         maxLength={100}
-        class="px-4 py-2 bg-gray-100 disabled:opacity-20 bg-opacity-50 rounded-md"
+        class="px-4 py-2 bg-gray-100/50 disabled:opacity-20 rounded-md"
         autocomplete="name"
       />
       <label for="email">Email</label>
@@ -112,7 +112,7 @@ export default function ContactForm(props: ContactFormProps) {
         type="email"
         id="email"
         name="email"
-        class="px-4 py-2 bg-gray-100 disabled:opacity-20 bg-opacity-50 rounded-md"
+        class="px-4 py-2 bg-gray-100/50 disabled:opacity-20 rounded-md"
         autocomplete="email"
       />
       <label for="message">Message *</label>
@@ -120,13 +120,13 @@ export default function ContactForm(props: ContactFormProps) {
         id="message"
         name="message"
         maxLength={1000}
-        class="px-4 py-2 bg-gray-100 disabled:opacity-20 h-28 bg-opacity-50 rounded-md"
+        class="px-4 py-2 bg-gray-100/50 disabled:opacity-20 h-28 rounded-md"
         required
       >
       </textarea>
       <button
         type="submit"
-        class="px-16 py-2 bg-gray-900 disabled:opacity-20 bg-opacity-50 justify-self-center rounded-md"
+        class="px-16 py-2 bg-gray-900/50 disabled:opacity-20 justify-self-center rounded-md"
       >
         Send
       </button>

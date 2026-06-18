@@ -2,3 +2,6 @@
 .env
 # Fresh build directory
 _fresh/
+.superpowers
+.playwright-mcp
+node_modules

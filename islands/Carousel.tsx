@@ -145,7 +145,7 @@ export default function Carousel() {
     >
       <button
         onClick={scrollBefore}
-        class="absolute z-10 hidden bg-gray-900 rounded-full bg-opacity-90 md:block md:left-8 lg:left-24 top-1/2 transform translate-y-full"
+        class="absolute z-10 hidden bg-gray-900/90 rounded-full md:block md:left-8 lg:left-24 top-1/2 transform translate-y-full"
         aria-label="previous"
       >
         <svg
@@ -167,7 +167,7 @@ export default function Carousel() {
       </div>
       <button
         onClick={scrollNext}
-        class="absolute z-10 hidden bg-gray-900 rounded-full bg-opacity-90 md:block md:right-8 lg:right-24 top-1/2 transform translate-y-full"
+        class="absolute z-10 hidden bg-gray-900/90 rounded-full md:block md:right-8 lg:right-24 top-1/2 transform translate-y-full"
         aria-label="next"
       >
         <svg
