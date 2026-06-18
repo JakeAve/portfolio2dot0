@@ -1,6 +1,5 @@
-import type { Handlers, PageProps, RouteConfig } from "$fresh/server.ts";
+import type { PageProps, RouteConfig } from "$fresh/server.ts";
 import { Head } from "$fresh/runtime.ts";
-import { getCount, setCount } from "../utils/db.ts";
 import { FullHeightSection } from "../components/FullHeightSection.tsx";
 import Cube from "../islands/Cube.tsx";
 import Carousel from "../islands/Carousel.tsx";
@@ -16,15 +15,6 @@ import { setCSP } from "../csp.ts";
 interface HomeProps {
   start: number;
 }
-
-export const handler: Handlers<HomeProps> = {
-  async GET(_req, ctx) {
-    let start = await getCount();
-    if (start === null) start = 1;
-    setCount(start + 1);
-    return ctx.render();
-  },
-};
 
 export default function Home(_props: PageProps<HomeProps>) {
   setCSP();
