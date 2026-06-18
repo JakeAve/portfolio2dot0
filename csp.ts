@@ -11,10 +11,12 @@ export const cspDirectives: ContentSecurityPolicyDirectives = {
     "https://www.google.com/recaptcha/",
     "https://www.gstatic.com/recaptcha/",
     "https://esm.sh/",
+    "https://cdn.tailwindcss.com",
   ],
   fontSrc: [SELF, "https://fonts.gstatic.com/"],
   styleSrc: [
     SELF,
+    "'unsafe-inline'",
     "https://fonts.gstatic.com/",
     "https://fonts.googleapis.com/",
   ],

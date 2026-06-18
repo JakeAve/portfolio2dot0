@@ -20,6 +20,8 @@ export default function App(appProps: AppProps) {
         <link rel="stylesheet" href="/animate.css" />
         <link rel="stylesheet" href="/styles.css" />
         <link rel="icon" href="/favicon_io/apple-touch-icon.png" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="/tailwind.config.js"></script>
         <script
           src={`https://www.google.com/recaptcha/api.js?render=${
             Deno.env.get(
