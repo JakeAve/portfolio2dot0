@@ -2,6 +2,8 @@
 .env
 # Fresh build directory
 _fresh/
+# Vite dependency pre-bundling cache
+.vite/
 .superpowers
 .playwright-mcp
 node_modules

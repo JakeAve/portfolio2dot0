@@ -51,7 +51,7 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
 
   const textureLoader = new THREE.TextureLoader();
 
-  const wizardTexture = textureLoader.load("./imgs/wizard.jpeg");
+  const wizardTexture = textureLoader.load("./imgs/wizard.webp");
   const geometry = new THREE.BoxGeometry(1, 1, 1);
   const material = new THREE.MeshStandardMaterial({
     map: wizardTexture,
@@ -62,16 +62,16 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
   cube.castShadow = true;
 
   const iconTextures = [
-    "./imgs/react.png",
-    "./imgs/html.png",
-    "./imgs/css.png",
-    "./imgs/node.png",
-    "./imgs/typescript.png",
-    "./imgs/git.png",
-    "./imgs/aws.png",
-    "./imgs/kubernetes.png",
-    "./imgs/docker.png",
-    "./imgs/mongodb.png",
+    "./imgs/react.webp",
+    "./imgs/html.webp",
+    "./imgs/css.webp",
+    "./imgs/node.webp",
+    "./imgs/typescript.webp",
+    "./imgs/git.webp",
+    "./imgs/aws.webp",
+    "./imgs/kubernetes.webp",
+    "./imgs/docker.webp",
+    "./imgs/mongodb.webp",
   ].map((src) => textureLoader.load(src));
 
   const pivots: Pivot[] = [];

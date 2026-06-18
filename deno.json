@@ -4,7 +4,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "deno serve -A _fresh/server.js",
-    "imgs": "deno run --allow-read --allow-write=./static --allow-env --allow-run ./scripts/convertImages.ts"
+    "imgs": "deno run --allow-read --allow-write=./static --allow-env --allow-run ./scripts/convertImages.ts",
+    "textures": "deno run --allow-read --allow-write=./static --allow-env --allow-run ./scripts/convertTextures.ts"
   },
   "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" },
   "imports": {
