@@ -1,18 +1,34 @@
-import * as THREE from "three";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import {
+  AmbientLight,
+  BasicShadowMap,
+  BoxGeometry,
+  DoubleSide,
+  Mesh,
+  MeshLambertMaterial,
+  MeshStandardMaterial,
+  Object3D,
+  PerspectiveCamera,
+  PlaneGeometry,
+  PointLight,
+  RepeatWrapping,
+  Scene,
+  SphereGeometry,
+  TextureLoader,
+  WebGLRenderer,
+} from "three";
 
 function getRandomNumber(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 
 interface Pivot {
-  pivot: THREE.Object3D;
+  pivot: Object3D;
   y: number;
   sign: -1 | 1;
 }
 
 interface Planet {
-  planet: THREE.Mesh;
+  planet: Mesh;
   y: number;
   sign: -1 | 1;
 }
@@ -26,37 +42,37 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
   const darkMedia = globalThis.matchMedia?.("(prefers-color-scheme: dark)");
   let groundColor = darkMedia?.matches ? 0xb45309 : 0xfde68a;
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
+  const scene = new Scene();
+  const camera = new PerspectiveCamera(
     45,
     canvas.clientWidth / canvas.clientHeight,
     1,
     1000,
   );
   camera.position.set(0, 5.5804, 7);
-  const cameraPivot = new THREE.Object3D();
+  const cameraPivot = new Object3D();
   cameraPivot.position.set(0, 3, 0);
   cameraPivot.add(camera);
   cameraPivot.rotateX(0.3);
   scene.add(cameraPivot);
 
-  const renderer = new THREE.WebGLRenderer({
+  const renderer = new WebGLRenderer({
     canvas,
     alpha: true,
     antialias: true,
   });
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.BasicShadowMap;
+  renderer.shadowMap.type = BasicShadowMap;
   renderer.setPixelRatio(1);
 
-  const textureLoader = new THREE.TextureLoader();
+  const textureLoader = new TextureLoader();
 
   const wizardTexture = textureLoader.load("./imgs/wizard.webp");
-  const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshStandardMaterial({
+  const geometry = new BoxGeometry(1, 1, 1);
+  const material = new MeshStandardMaterial({
     map: wizardTexture,
   });
-  const cube = new THREE.Mesh(geometry, material);
+  const cube = new Mesh(geometry, material);
   cube.translateY(3);
   scene.add(cube);
   cube.castShadow = true;
@@ -78,18 +94,18 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
   const planets: Planet[] = [];
 
   for (let i = 0; i < iconTextures.length; i++) {
-    const sphereGeo = new THREE.SphereGeometry(0.25, 16, 16);
+    const sphereGeo = new SphereGeometry(0.25, 16, 16);
     const sphereTex = iconTextures[i];
-    sphereTex.wrapS = sphereTex.wrapT = THREE.RepeatWrapping;
+    sphereTex.wrapS = sphereTex.wrapT = RepeatWrapping;
     sphereTex.repeat.set(2, 1);
-    const sphereMaterial = new THREE.MeshStandardMaterial({
+    const sphereMaterial = new MeshStandardMaterial({
       map: sphereTex,
     });
 
-    const sphere = new THREE.Mesh(sphereGeo, sphereMaterial);
+    const sphere = new Mesh(sphereGeo, sphereMaterial);
     sphere.castShadow = true;
 
-    const pivot = new THREE.Object3D();
+    const pivot = new Object3D();
     pivot.position.set(0, 3, 0);
     pivot.add(sphere);
 
@@ -111,13 +127,13 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
     });
   }
 
-  const groundGeo = new THREE.PlaneGeometry(40, 40);
-  const groundMat = new THREE.MeshLambertMaterial({
+  const groundGeo = new PlaneGeometry(40, 40);
+  const groundMat = new MeshLambertMaterial({
     color: groundColor,
-    side: THREE.DoubleSide,
+    side: DoubleSide,
   });
 
-  const ground = new THREE.Mesh(groundGeo, groundMat);
+  const ground = new Mesh(groundGeo, groundMat);
   ground.rotation.x = Math.PI * -0.5;
   ground.receiveShadow = true;
   scene.add(ground);
@@ -126,25 +142,25 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
   // `ground` exists so it never references it before definition.
   const handleColorSchemeChange = (event: MediaQueryListEvent) => {
     groundColor = event.matches ? 0xb45309 : 0xfde68a;
-    ground.material = new THREE.MeshLambertMaterial({
+    ground.material = new MeshLambertMaterial({
       color: groundColor,
-      side: THREE.DoubleSide,
+      side: DoubleSide,
     });
   };
   darkMedia?.addEventListener("change", handleColorSchemeChange);
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 2.5);
+  const ambientLight = new AmbientLight(0xffffff, 2.5);
 
-  const pointLight = new THREE.PointLight(0xffffff, 35);
+  const pointLight = new PointLight(0xffffff, 35);
   pointLight.castShadow = true;
   pointLight.position.set(0, 10, 0);
   scene.add(pointLight, ambientLight);
 
-  const secondLight = new THREE.PointLight(0xffffff, 3);
+  const secondLight = new PointLight(0xffffff, 3);
   secondLight.position.set(0, 3, 0);
   scene.add(secondLight);
 
-  const resizeRendererToDisplaySize = (renderer: THREE.WebGLRenderer) => {
+  const resizeRendererToDisplaySize = (renderer: WebGLRenderer) => {
     const canvas = renderer.domElement;
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
@@ -155,19 +171,45 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
     return needResize;
   };
 
-  const controls = new OrbitControls(camera as THREE.Camera, canvas);
-  controls.minDistance = 2;
-  controls.maxDistance = 20;
-  controls.keyPanSpeed = 0.05;
-  controls.rotateSpeed = 0.05;
-  controls.enableZoom = false;
-  controls.target = new THREE.Vector3(0, 3, 0);
-  controls.update();
+  // Lightweight drag-to-rotate in place of OrbitControls (which would pull the
+  // whole addon into the bundle). Dragging tilts/spins the camera pivot; the
+  // render loop keeps auto-orbiting on top of whatever offset the user sets.
+  let dragging = false;
+  let lastX = 0;
+  let lastY = 0;
+  const DRAG_SPEED = 0.005;
+  const MAX_TILT = 1.2;
+
+  const onPointerDown = (e: PointerEvent) => {
+    dragging = true;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    canvas.setPointerCapture(e.pointerId);
+  };
+  const onPointerMove = (e: PointerEvent) => {
+    if (!dragging) return;
+    const dx = e.clientX - lastX;
+    const dy = e.clientY - lastY;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    cameraPivot.rotation.y += dx * DRAG_SPEED;
+    cameraPivot.rotation.x = Math.max(
+      -MAX_TILT,
+      Math.min(MAX_TILT, cameraPivot.rotation.x + dy * DRAG_SPEED),
+    );
+  };
+  const onPointerUp = (e: PointerEvent) => {
+    dragging = false;
+    canvas.releasePointerCapture?.(e.pointerId);
+  };
+  canvas.addEventListener("pointerdown", onPointerDown);
+  canvas.addEventListener("pointermove", onPointerMove);
+  canvas.addEventListener("pointerup", onPointerUp);
+  canvas.addEventListener("pointercancel", onPointerUp);
 
   let frameId = 0;
   const render = () => {
     frameId = requestAnimationFrame(render);
-    renderer.render(scene, camera);
     cube.rotation.y += 0.001;
     cube.rotation.z += 0.001;
     pivots.forEach((pivot) => {
@@ -182,16 +224,25 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
       camera.updateProjectionMatrix();
     }
     cameraPivot.rotation.y += 0.005;
-    controls.target.set(0, 3, 0);
+    // Keep the camera aimed at the center cube while the pivot orbits it —
+    // this is what OrbitControls used to do on every update(). lookAt reads the
+    // camera's world matrix, so refresh the pivot's transform first or the aim
+    // lags a frame behind the orbit and wobbles.
+    cameraPivot.updateMatrixWorld(true);
+    camera.lookAt(0, 3, 0);
+    renderer.render(scene, camera);
   };
   render();
 
   return () => {
     cancelAnimationFrame(frameId);
     darkMedia?.removeEventListener("change", handleColorSchemeChange);
-    controls.dispose();
-    scene.traverse((obj) => {
-      if (obj instanceof THREE.Mesh) {
+    canvas.removeEventListener("pointerdown", onPointerDown);
+    canvas.removeEventListener("pointermove", onPointerMove);
+    canvas.removeEventListener("pointerup", onPointerUp);
+    canvas.removeEventListener("pointercancel", onPointerUp);
+    scene.traverse((obj: Object3D) => {
+      if (obj instanceof Mesh) {
         obj.geometry.dispose();
         const mat = obj.material;
         if (Array.isArray(mat)) {
